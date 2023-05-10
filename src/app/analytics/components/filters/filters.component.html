@@ -1,0 +1,38 @@
+<tui-input-month-range
+  class="control"
+  [min]="(min$ | async)!"
+  [max]="max"
+  [ngModel]="range"
+  (ngModelChange)="onRangeChange($event)"
+>
+  Select timeframe
+</tui-input-month-range>
+<tui-input-month
+  class="mobile"
+  [min]="(min$ | async)!"
+  [max]="max"
+  [ngModel]="range.from"
+  (ngModelChange)="onFrom($event)"
+>
+  Start month
+</tui-input-month>
+<tui-input-month
+  class="mobile"
+  [min]="(min$ | async)!"
+  [max]="max"
+  [ngModel]="range.to"
+  (ngModelChange)="onTo($event)"
+>
+  End month
+</tui-input-month>
+<tui-multi-select
+  class="control"
+  [tuiTextfieldCleaner]="true"
+  [expandable]="false"
+  [editable]="!isMobile"
+  [ngModel]="selected"
+  (ngModelChange)="onLabelsChange($event)"
+>
+  Select labels
+  <select tuiSelect multiple [items]="labels"></select>
+</tui-multi-select>

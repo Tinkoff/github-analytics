@@ -1,0 +1,32 @@
+<h1 class="header">
+  GitHub analytics
+  <button
+    tuiIconButton
+    shape="rounded"
+    appearance="secondary"
+    size="s"
+    icon="tuiIconChevronDownLarge"
+    class="toggle"
+    [class.toggle_open]="open"
+    (click)="open = !open"
+  >
+    Expand/Collapse
+  </button>
+</h1>
+<app-repository
+  #repo
+  [class.repository_pending]="!repo.submitted"
+></app-repository>
+<tui-expand class="filters" [expanded]="open">
+  <app-filters
+    *ngIf="data.labels$ | async as labels"
+    [labels]="labels"
+    [attr.inert]="repo.submitted && null"
+  ></app-filters>
+</tui-expand>
+<app-navigation
+  *ngIf="data.issues$ | async"
+  class="navigation"
+  [attr.inert]="repo.submitted && null"
+></app-navigation>
+<router-outlet *ngIf="repo.submitted"></router-outlet>

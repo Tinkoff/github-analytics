@@ -1,0 +1,5 @@
+<nav tuiTabs>
+  <a *ngFor="let tab of tabs" tuiTab routerLinkActive [routerLink]="tab.path">
+    {{ tab.name }}
+  </a>
+</nav>

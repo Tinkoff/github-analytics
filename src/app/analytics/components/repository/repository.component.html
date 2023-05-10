@@ -1,0 +1,57 @@
+<form (submit.prevent)="onSubmit()">
+  <tui-input
+    [formControl]="control"
+    [tuiTextfieldCleaner]="true"
+    [tuiTextfieldIcon]="link"
+  >
+    Repository
+    <input tuiTextfield placeholder="owner/repository" />
+    <ng-template #link>
+      <a
+        @tuiFadeIn
+        tuiIconButton
+        size="s"
+        shape="rounded"
+        appearance="secondary"
+        icon="tuiIconExternalLink"
+        title="Visit"
+        target="_blank"
+        rel="noreferrer"
+        class="link"
+        [disabled]="control.invalid"
+        [tuiFocusable]="control.valid"
+        [href]="'https://github.com/' + control.value"
+        (click.capture.stop)="(0)"
+      ></a>
+    </ng-template>
+  </tui-input>
+  <tui-error
+    [formControl]="control"
+    [error]="[] | tuiFieldError | async"
+  ></tui-error>
+  <div *ngIf="!submitted" @tuiHeightCollapse @tuiFadeIn>
+    <p class="submit">
+      <button tuiButton [disabled]="control.invalid">Submit</button>
+    </p>
+    <h2>Suggestions:</h2>
+    <button
+      *ngFor="let item of suggestions"
+      tuiTag
+      size="l"
+      class="tag"
+      [autoColor]="true"
+      [value]="item"
+      (click)="control.setValue(item)"
+    ></button>
+    <button
+      *ngFor="let item of stored"
+      tuiTag
+      size="l"
+      class="tag"
+      [removable]="true"
+      [value]="item"
+      (edited)="remove(item)"
+      (click)="control.setValue(item)"
+    ></button>
+  </div>
+</form>

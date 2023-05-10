@@ -1,19 +1,19 @@
 <tui-axes
-  *ngIf="data$ | async as charts"
-  class="axes"
-  [horizontalLines]="2"
-  [verticalLines]="getXLabels(charts).length"
-  [axisYLabels]="getYLabels(getHeight(charts))"
-  [axisXLabels]="getXLabels(charts)"
+    *ngIf="data$ | async as charts"
+    class="axes"
+    [horizontalLines]="2"
+    [verticalLines]="getXLabels(charts).length"
+    [axisYLabels]="getYLabels(getHeight(charts))"
+    [axisXLabels]="getXLabels(charts)"
 >
-  <tui-line-days-chart
-    class="opened"
-    [height]="getHeight(charts)"
-    [value]="charts.opened"
-  ></tui-line-days-chart>
-  <tui-line-days-chart
-    class="resolved"
-    [height]="getHeight(charts)"
-    [value]="charts.closed"
-  ></tui-line-days-chart>
+    <tui-line-days-chart
+        class="opened"
+        [height]="getHeight(charts)"
+        [value]="charts.opened"
+    ></tui-line-days-chart>
+    <tui-line-days-chart
+        class="resolved"
+        [height]="getHeight(charts)"
+        [value]="charts.closed"
+    ></tui-line-days-chart>
 </tui-axes>

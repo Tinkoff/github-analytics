@@ -1,38 +1,38 @@
 @import "@taiga-ui/core/styles/taiga-ui-local";
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .filters {
-  margin: 1rem 0;
+    margin: 1rem 0;
 }
 
 .filters,
 .navigation {
-  .transition(opacity);
+    .transition(opacity);
 
-  .repository_pending ~ & {
-    opacity: 0;
-    pointer-events: none;
-  }
+    .repository_pending ~ & {
+        opacity: 0;
+        pointer-events: none;
+    }
 }
 
 .toggle {
-  .transition(transform);
-  font-size: 0 !important;
-  margin-right: 0.5rem;
+    .transition(transform);
+    font-size: 0 !important;
+    margin-right: 0.5rem;
 
-  &_open {
-    display: none;
-    transform: rotate(180deg);
-  }
+    &_open {
+        display: none;
+        transform: rotate(180deg);
+    }
 }
 
 :host-context(tui-root._mobile) {
-  .toggle {
-    display: block;
-  }
+    .toggle {
+        display: block;
+    }
 }
